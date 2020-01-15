@@ -76,7 +76,21 @@ def delete(id):
     post= BlogPost.query.get_or_404(id)
     db.session.delete(post)
     db.session.commit()
-    return redirect('/post')       
+    return redirect('/post')   
+
+#creqtion de new post
+@app.route('/post/new', methods=['GET', 'POST'])
+def new-post('/post'):
+    if(request.method == 'POST'):
+        post_title = request.form['title']
+        post_content = request.form['content']
+        post_Auteur = request.form['author']
+        db.session.add(BlogPost(title = post_title,content=post_content,Auteur=post_Auteur))
+        db.session.commit()
+        return redirect('/post')
+    else:
+        return render_template('new_post.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
