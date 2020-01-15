@@ -80,7 +80,7 @@ def delete(id):
 
 #creqtion de new post
 @app.route('/post/new', methods=['GET', 'POST'])
-def new-post('/post'):
+def new_post():
     if(request.method == 'POST'):
         post_title = request.form['title']
         post_content = request.form['content']
